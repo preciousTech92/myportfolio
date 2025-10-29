@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Precious U. Oguamanam | Full Stack Developer</title>
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@300;400;600&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #d4af37;
+      --deep-gold: #b9971a;
+      --dark: #0a0a0a;
+      --light: #fdf6e3;
+    }
+
+    body {
+      font-family: "Source Sans 3", sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      overflow-x: hidden;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: rgba(0,0,0,0.95);
+      border-bottom: 1px solid rgba(212,175,55,0.4);
+      font-family: "Playfair Display", serif;
+    }
+    .navbar-brand {
+      color: var(--gold) !important;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 1.4rem;
+    }
+    .nav-link {
+      color: var(--light) !important;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .nav-link:hover {
+      color: var(--gold) !important;
+      text-shadow: 0 0 8px var(--gold);
+    }
+
+    /* Thick white burger icon */
+    .navbar-toggler {
+      border: none;
+      outline: none;
+    }
+    .navbar-toggler-icon {
+      width: 30px;
+      height: 3px;
+      background-color: #fff;
+      position: relative;
+      display: inline-block;
+    }
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+      content: '';
+      width: 30px;
+      height: 3px;
+      background-color: #fff;
+      position: absolute;
+      left: 0;
+      transition: 0.3s;
+    }
+    .navbar-toggler-icon::before { top: -10px; }
+    .navbar-toggler-icon::after { top: 10px; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #1a1a1a, #000);
+      text-align: center;
+      padding: 160px 20px;
+    }
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 3.5rem;
+      letter-spacing: 1.2px;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: #000;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    .btn-gold:hover {
+      background: var(--deep-gold);
+      color: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--gold);
+    }
+
+    /* About */
+    #about {
+      background: radial-gradient(circle, #111, #000);
+      padding: 90px 0;
+    }
+    #about h2 {
+      font-family: "Playfair Display", serif;
+      color: var(--gold);
+      margin-bottom: 25px;
+      font-size: 2.4rem;
+    }
+    /* Flip card */
+    .flip-card {
+      background-color: transparent;
+      width: 280px;
+      height: 280px;
+      perspective: 1000px;
+      margin: auto;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      backface-visibility: hidden;
+      overflow: hidden;
+    }
+    .flip-card-front img, .flip-card-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(135deg, #1a1a1a, #eeeeee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--gold);
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+    }
+
+    /* Projects */
+    #projects {
+      background: #0d0d0d;
+      padding: 90px 15px;
+    }
+    #projects h2 {
+      font-family: "Playfair Display", serif;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 60px;
+      font-size: 2.5rem;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background-color: #000;
+      border: 1px solid var(--gold);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+    }
+    .project-card img, .project-card video {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .project-card .card-body {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 16px;
+    }
+    .project-card h5 {
+      color: var(--gold);
+      font-weight: 600;
+      font-family: "Playfair Display", serif;
+      margin: 0;
+    }
+    .project-card p {
+      margin: 0;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: var(--gold);
+      text-align: center;
+      padding: 30px 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.2rem;
+    }
+    footer .social-icon i {
+      font-size: 1.6rem;
+      color: var(--gold);
+      transition: all 0.3s ease;
+      margin: 0 6px;
+    }
+    footer .social-icon i:hover {
+      color: var(--deep-gold);
+      text-shadow: 0 0 10px var(--gold);
+      transform: scale(1.2);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 1.6rem; }
+      .hero{
+        text-align: left;
+      }
+      .nav-item{
+        text-align: justify;
+      }
+      .col-md-7{
+        text-align: justify;
+      }
+      .hero p { font-size: 1rem; }
+
+      .flip-card { width: 180px; height: 180px; }
+      .flip-card-front img, .flip-card-back img { object-fit: contain; }
+
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card .card-body { padding: 12px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">my portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto text-center">
+          <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="next page.html" target="_blank" class="nav-link text-warning"><i class="bi bi-file-earmark-pdf"></i> CV</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home" data-aos="fade-up">
+    <div class="container">
+      <h1>Hello, I'm <span style="color:#fff;">Precious U. Oguamanam</span></h1>
+      <p class="mt-3">Full Stack Developer crafting immersive, scalable digital experiences.</p>
+      <a href="#about" class="btn btn-gold mt-4 px-4 py-2">Explore More</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" data-aos="fade-up">
+    <div class="container">
+      <div class="row align-items-center gy-4">
+        <div class="col-md-5 text-center" data-aos="flip-left">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="./ChatGPT Image Oct 28, 2025, 12_55_25 AM.png" alt="Precious">
+              </div>
+              <div class="flip-card-back">
+                <img src="./Untitled.jpg" alt="Precious">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7" data-aos="fade-left">
+          <h2>About Me</h2>
+          <p>I’m a Full Stack Developer, passionate about blending design and functionality through elegant, optimized code. My work emphasizes performance, accessibility, and creative polish.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" data-aos="fade-up">
+    <div class="container">
+      <h2>My Projects</h2>
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card">
+          <video controls poster="./project1-thumb.jpg">
+            <source src="./project1.mp4" type="video/mp4">
+          </video>
+          <div class="card-body">
+            <h5>E-Commerce Platform</h5>
+            <p>Online shopping web app built with Laravel & React.</p>
+            <a href="https://project1-demo.com" target="_blank" class="btn btn-gold w-100">View Project</a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <img src="./project2-thumb.jpg" alt="Portfolio Website">
+          <div class="card-body">
+            <h5>Portfolio Website</h5>
+            <p>Personal branding website with Bootstrap animations.</p>
+            <a href="https://project2-demo.com" target="_blank" class="btn btn-gold w-100">View Project</a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <video controls poster="./project3-thumb.jpg">
+            <source src="./project3.mp4" type="video/mp4">
+          </video>
+          <div class="card-body">
+            <h5>Chat Application</h5>
+            <p>Realtime Node.js & Socket.io based communication app.</p>
+            <a href="https://project3-demo.com" target="_blank" class="btn btn-gold w-100">View Project</a>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <img src="./project4-thumb.jpg" alt="Blog CMS">
+          <div class="card-body">
+            <h5>Blog CMS</h5>
+            <p>Custom content management system using PHP and MySQL.</p>
+            <a href="https://project4-demo.com" target="_blank" class="btn btn-gold w-100">View Project</a>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card">
+          <video controls poster="./project5-thumb.jpg">
+            <source src="./project5.mp4" type="video/mp4">
+          </video>
+          <div class="card-body">
+            <h5>Inventory Dashboard</h5>
+            <p>React-based admin dashboard with data visualization.</p>
+            <a href="https://project5-demo.com" target="_blank" class="btn btn-gold w-100">View Project</a>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card">
+          <img src="./project6-thumb.jpg" alt="Restaurant Website">
+          <div class="card-body">
+            <h5>Restaurant Website</h5>
+            <p>Responsive website with online menu & booking feature.</p>
+            <a href="https://project6-demo.com" target="_blank" class="btn btn-gold w-100">View Project</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="mt-3">
+        <a href="https://wa.me/2348145105866" target="_blank" class="text-decoration-none social-icon">
+          <i class="bi bi-whatsapp"></i>
+        </a>
+        <a href="https://facebook.com/yourprofile" target="_blank" class="text-decoration-none social-icon">
+          <i class="bi bi-facebook"></i>
+        </a>
+        <a href="https://twitter.com/yourprofile" target="_blank" class="text-decoration-none social-icon">
+          <i class="bi bi-twitter-x"></i>
+        </a>
+        <a href="https://instagram.com/yourprofile" target="_blank" class="text-decoration-none social-icon">
+          <i class="bi bi-instagram"></i>
+        </a>
+      </div>
+      <p>© 2025 Precious U. Oguamanam</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, offset: 120, once: true });
+  </script>
+</body>
+</html>
