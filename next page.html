@@ -59,14 +59,27 @@
   }
 
   /* On mobile: hide PDF and show image */
-  @media (max-width: 768px) {
+<style>
+  .pdf-view, .pdf-image {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Default: show PDF */
+  .pdf-image {
+    display: none;
+  }
+
+  /* On mobile: hide PDF and show image */
+  @media (max-width: 760px) {
     .pdf-view {
       display: none;
     }
     .pdf-image {
       display: block;
     }
-     }
+  }
+</style>
   </style>
 </head>
 
@@ -85,6 +98,7 @@
 <img src="./OGUAMANAM PRECIOUS UCHECHUKWU CV - converted_page-0002.jpg" alt="PDF Preview" class="pdf-image"></iframe>
 </body>
 </html>
+
 
 
 
