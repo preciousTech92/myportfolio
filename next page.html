@@ -48,9 +48,24 @@
       box-shadow: 0 0 12px #d4af37;
       transform: scale(1.05);
     }
-     @media (max-width: 768px){
-       iframe{
-         display:block;
+      .pdf-view, .pdf-image {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Default: show PDF */
+  .pdf-image {
+    display: none;
+  }
+
+  /* On mobile: hide PDF and show image */
+  @media (max-width: 768px) {
+    .pdf-view {
+      display: none;
+    }
+    .pdf-image {
+      display: block;
+    }
      }
   </style>
 </head>
@@ -65,7 +80,9 @@
   </div>
 
   <!-- CV Viewer -->
-  <iframe src="./OGUAMANAM PRECIOUS UCHECHUKWU CV - converted.pdf"></iframe>
+  <iframe class= "pdf-preview" src="./OGUAMANAM PRECIOUS UCHECHUKWU CV - converted.pdf"></iframe>
+  <img src="pdf-preview.jpg" alt="PDF Preview" class="pdf-image">
 </body>
 </html>
+
 
