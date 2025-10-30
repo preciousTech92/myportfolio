@@ -236,7 +236,7 @@
     }
 
     /* Mobile Responsiveness */
-    @media (max-width: 760px) {
+    @media (max-width: 768px) {
       .hero h1 { font-size: 1.6rem; }
       .hero{
         text-align: left;
@@ -249,10 +249,8 @@
       }
       .hero p { font-size: 1rem; }
 
-      .flip-card { width: 300px; height: 300px; }
-      .flip-card-front img,
-      .flip-card-back img{ object-fit: contain; }
-
+      .flip-card { width: 180px; height: 180px; }
+      .flip-card-front img,.flip-card-back img{ object-fit: contain; }
       .projects-grid { grid-template-columns: 1fr; }
       .project-card .card-body { padding: 12px; }
     }
@@ -294,8 +292,8 @@
         <div class="col-md-5 text-center" data-aos="flip-left">
           <div class="flip-card">
             <div class="flip-card-inner">
-              <div class="flip-card-back">
-                <img src="image.jpg" alt="main">
+              <div class="flip-card-front">
+                <img src="image.jpg" alt="Precious">
               </div>
               <div class="flip-card-back">
                 <img src="image.jpg" alt="Precious">
@@ -414,6 +412,7 @@
   </script>
 </body>
 </html>
+
 
 
 
